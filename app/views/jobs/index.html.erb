@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>Category</th>
     <th>Job type</th>
     <th>Company</th>
     <th>Logo</th>
@@ -23,6 +24,7 @@
 
 <% @jobs.each do |job| %>
   <tr>
+    <td><%= job.category.name %></td>
     <td><%= job.job_type %></td>
     <td><%= job.company %></td>
     <td><%= job.logo %></td>
