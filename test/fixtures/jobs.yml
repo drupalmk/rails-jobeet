@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  type: 
+  job_type: MyString
   company: MyString
   logo: MyString
   url: MyString
@@ -12,12 +12,12 @@ one:
   is_public: false
   is_activated: false
   email: MyString
-  created_at: 2012-03-25 20:56:25
-  updated_at: 2012-03-25 20:56:25
-  expires_at: 2012-03-25 20:56:25
+  created_at: 2012-03-25 21:01:50
+  updated_at: 2012-03-25 21:01:50
+  expires_at: 2012-03-25 21:01:50
 
 two:
-  type: 
+  job_type: MyString
   company: MyString
   logo: MyString
   url: MyString
@@ -28,6 +28,6 @@ two:
   is_public: false
   is_activated: false
   email: MyString
-  created_at: 2012-03-25 20:56:25
-  updated_at: 2012-03-25 20:56:25
-  expires_at: 2012-03-25 20:56:25
+  created_at: 2012-03-25 21:01:50
+  updated_at: 2012-03-25 21:01:50
+  expires_at: 2012-03-25 21:01:50
