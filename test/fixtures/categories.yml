@@ -1,9 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  name: 
-  slug: MyString
+design:
+  name: Design 
+  slug: design
 
-two:
-  name: 
-  slug: MyString
+programming:
+  name: Programming
+  slug: programming
+
+manager:
+  name: Manager
+  slug: manager
+
+administrator:
+  name: Administrator
+  slug: administrator

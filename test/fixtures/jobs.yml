@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  job_type: MyString
+  company: MyString
+  logo: MyString
+  url: MyString
+  position: MyString
+  location: MyString
+  description: MyString
+  how_to_apply: MyString
+  is_public: false
+  is_activated: false
+  email: MyString
+  created_at: 2012-03-25 21:30:13
+  updated_at: 2012-03-25 21:30:13
+  expires_at: 2012-03-25 21:30:13
+
+two:
+  job_type: MyString
+  company: MyString
+  logo: MyString
+  url: MyString
+  position: MyString
+  location: MyString
+  description: MyString
+  how_to_apply: MyString
+  is_public: false
+  is_activated: false
+  email: MyString
+  created_at: 2012-03-25 21:30:13
+  updated_at: 2012-03-25 21:30:13
+  expires_at: 2012-03-25 21:30:13
