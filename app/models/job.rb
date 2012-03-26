@@ -24,8 +24,7 @@ class Job < ActiveRecord::Base
        new_logo_filename = random_name + file_ext
        
        FileUtils.copy_file(self.logo_file.tempfile, Rails.root.join(Job::JOB_UPLOADS_DIR, new_logo_filename))
-
-       File.delete(Rails.root.join(Job::JOB_UPLOADS_DIR, self.logo)) unless self.logo.nil?
+       delete_upload
 
        self.logo = new_logo_filename
        self.logo_file = nil
@@ -44,9 +43,21 @@ class Job < ActiveRecord::Base
     super
   end
   
+  def delete
+    delete_upload
+    super
+  end
+  
   private
     def default_values
       self.job_type ||= 'fulltime'
       self.is_activated |= false
+    end
+    
+    def delete_upload
+      if not self.logo.nil?
+        File.delete(Rails.root.join(Job::JOB_UPLOADS_DIR, self.logo))
+        self.logo = nil
+      end
     end
 end
