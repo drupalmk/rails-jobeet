@@ -16,15 +16,14 @@
   </div>
   <div class="field">
     <%= f.label :job_type %><br />
-    <%= f.text_field :job_type %>
+    <% Job::JOB_TYPES.each { |value, name|  %>
+        <%= f.label :job_type, name, :value => value %>
+        <%= f.radio_button :job_type, value %>
+    <% } %>
   </div>
-  <div class="field">
-    <%= f.label :company %><br />
-    <%= f.text_field :company %>
-  </div>
-  <div class="field">
+ <div class="field">
     <%= f.label :logo %><br />
-    <%= f.text_field :logo %>
+    <%= f.file_field :logo_file %>
   </div>
   <div class="field">
     <%= f.label :url %><br />
@@ -57,18 +56,6 @@
   <div class="field">
     <%= f.label :email %><br />
     <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :created_at %><br />
-    <%= f.datetime_select :created_at %>
-  </div>
-  <div class="field">
-    <%= f.label :updated_at %><br />
-    <%= f.datetime_select :updated_at %>
-  </div>
-  <div class="field">
-    <%= f.label :expires_at %><br />
-    <%= f.datetime_select :expires_at %>
   </div>
   <div class="actions">
     <%= f.submit %>
