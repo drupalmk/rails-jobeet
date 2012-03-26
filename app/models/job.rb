@@ -40,6 +40,7 @@ class Job < ActiveRecord::Base
     else
       self.updated_at = DateTime.now
     end
+    self.upload
     super
   end
   
