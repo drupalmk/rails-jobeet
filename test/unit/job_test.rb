@@ -10,6 +10,20 @@ class JobTest < ActiveSupport::TestCase
     @job.delete
   end
   
+  test "job logo_file_save" do
+    upload = ActionDispatch::Http::UploadedFile.new({
+                  :filename => 'sensio-labs.gif',
+                  :content_type => 'image/gif',
+                  :tempfile => File.new("#{Rails.root}/test/fixtures/sensio-labs.gif")
+             })
+
+    @job.logo_file = upload
+    stored_file_name = @job.upload
+
+    assert_not_nil stored_file_name
+    assert_equal true, File::exists?(Rails.root.join(Job::JOB_UPLOADS_DIR, stored_file_name))
+  end
+  
   test "job creation date" do
     @job.save
     created_at = @job.created_at
