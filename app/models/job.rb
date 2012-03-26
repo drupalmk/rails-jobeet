@@ -23,8 +23,9 @@ class Job < ActiveRecord::Base
        file_ext = File.extname(self.logo_file.tempfile)
        new_logo_filename = random_name + file_ext
        
-       FileUtils.copy_file(self.logo_file.tempfile, Rails.root.join(Job::JOB_UPLOADS_DIR, new_logo_filename))
        delete_upload
+       FileUtils.copy_file(self.logo_file.tempfile, Rails.root.join(Job::JOB_UPLOADS_DIR, new_logo_filename))
+       
 
        self.logo = new_logo_filename
        self.logo_file = nil
