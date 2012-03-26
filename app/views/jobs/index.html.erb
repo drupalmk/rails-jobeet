@@ -1,14 +1,16 @@
 <% content_for :styles do %>
     <%= stylesheet_link_tag "jobs", :media => "all" %>
 <% end %>
-<table class="jobs">
-  <% @jobs.each do |job| %>
-      <tr class="<%= cycle("even", "odd") %>">
-        <td class="location"><%= job.location %></td>
-        <td class="position">
-          <%= link_to job.position, job %>
-        </td>
-        <td class="company"><%= job.company %></td>
-      </tr>
-  <% end %>
-</table>
+<div id="jobs">
+  <% @categories.each do |category| %>
+    <div class="category_<%= category.name %>">
+        <div class="category">
+          <div class="feed">
+            <a href="">Feed</a>
+          </div>
+          <h1><%= category.name %></h1>
+        </div>
+        <%= render "list", :jobs => category.active_jobs  %>
+    </div>
+   <% end %>
+</div>

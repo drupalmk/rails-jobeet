@@ -55,5 +55,7 @@ module Jobeet
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    
+    MAX_JOBS_ON_HOME = 10
   end
 end
