@@ -29,7 +29,7 @@
   <p class="how_to_apply"><%= @job.how_to_apply %></p>
 
   <div class="meta">
-    <small>posted on <%= @job.created_at.to_formatted_s("m/d/Y") %></small>
+    <small>posted on <%= @job.created_at.to_formatted_s(:long_ordinal) %></small>
   </div>
 
   <div style="padding: 20px 0">
