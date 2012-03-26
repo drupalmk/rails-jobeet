@@ -57,7 +57,7 @@ module Jobeet
     config.assets.version = '1.0'
     
     MAX_JOBS_ON_HOME = 10
-    
+     
     ACTIVE_DAYS = 30
   end
 end
