@@ -22,6 +22,10 @@ class JobTest < ActiveSupport::TestCase
 
     assert_not_nil stored_file_name
     assert_equal true, File::exists?(Rails.root.join(Job::JOB_UPLOADS_DIR, stored_file_name))
+    
+    @job.delete
+    assert_equal false, File::exists?(Rails.root.join(Job::JOB_UPLOADS_DIR, stored_file_name))
+
   end
   
   test "job creation date" do
