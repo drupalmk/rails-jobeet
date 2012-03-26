@@ -1,78 +1,40 @@
-<p id="notice"><%= notice %></p>
-<p>
-  <b>Category:</b>
-  <%= @job.category.name %>
-</p>
-<p>
-  <b>Job type:</b>
-  <%= @job.job_type %>
-</p>
+<% content_for :title do %>
+    <%= @job.company %> is looking for a <%= @job.position %>
+<% end %>
+<% content_for :styles do %>
+    <%= stylesheet_link_tag "job", :media => "all" %>
+<% end %>
+<div id="job">
+  <h1><%= @job.company %></h1>
+  <h2><%= @job.location %></h2>
+  <h3>
+    <%= @job.position %>
+    <small> - <%= Job::JOB_TYPES[@job.job_type.to_sym] %></small>
+  </h3>
+  <% unless @job.logo.nil? %>
+    <div class="logo">
+      <a href="<%= url_for @job %>">
+        <img src="/upload/jobs/<%= @job.logo %>"
+             alt="<%= @job.company %> logo" />
+      </a>
+    </div>  
+  <% end %>
 
-<p>
-  <b>Company:</b>
-  <%= @job.company %>
-</p>
+  <div class="description">
+    <%= @job.description %>
+  </div>
 
-<p>
-  <b>Logo:</b>
-  <%= @job.logo %>
-</p>
+  <h4>How to apply?</h4>
 
-<p>
-  <b>Url:</b>
-  <%= @job.url %>
-</p>
+  <p class="how_to_apply"><%= @job.how_to_apply %></p>
 
-<p>
-  <b>Position:</b>
-  <%= @job.position %>
-</p>
+  <div class="meta">
+    <small>posted on <%= @job.created_at.to_formatted_s("m/d/Y") %></small>
+  </div>
 
-<p>
-  <b>Location:</b>
-  <%= @job.location %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @job.description %>
-</p>
-
-<p>
-  <b>How to apply:</b>
-  <%= @job.how_to_apply %>
-</p>
-
-<p>
-  <b>Is public:</b>
-  <%= @job.is_public %>
-</p>
-
-<p>
-  <b>Is activated:</b>
-  <%= @job.is_activated %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @job.email %>
-</p>
-
-<p>
-  <b>Created at:</b>
-  <%= @job.created_at %>
-</p>
-
-<p>
-  <b>Updated at:</b>
-  <%= @job.updated_at %>
-</p>
-
-<p>
-  <b>Expires at:</b>
-  <%= @job.expires_at %>
-</p>
-
-
-<%= link_to 'Edit', edit_job_path(@job) %> |
-<%= link_to 'Back', jobs_path %>
+  <div style="padding: 20px 0">
+    <%= link_to 'Edit', edit_job_path(@job) %>
+    <%= link_to 'Back', jobs_path %>
+    <%= link_to 'Remove', @job, :confirm => 'Are you sure?', :method => :delete %>
+  </div>
+</div>

@@ -1,14 +1,68 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>Jobeet</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <title><% if content_for?(:title) then concat yield :title else %>Jobeet - You jobs board<% end %></title>
+  <%= stylesheet_link_tag "main", :media => "all" %>
+  <%= yield :styles %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div id="container">
+  <div id="header">
+    <div class="content">
+      <h1><a href="<%= url_for :root %>">
+        <%= image_tag "logo.jpg", :alt => "Jobeet Job Board" %>
+      </a></h1>
+      <div id="sub_header">
+        <div class="post">
+          <h2>Ask for people</h2>
+          <div>
+            <%= link_to "Post a Job", new_job_path %>
+          </div>
+        </div>
+        <div class="search">
+          <h2>Ask for a job</h2>
+          <form action="" method="get">
+            <input type="text" name="keywords"
+                   id="search_keywords" />
+            <input type="submit" value="search" />
+            <div class="help">
+              Enter some keywords (city, country, position, ...)
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<%= yield %>
-
+  <div id="content">
+    <% if flash[:notice] %>
+        <div class="flash_notice"><%= flash[:notice] %></div>
+    <% end %>
+    <% if flash[:error] %>
+        <div class="flash_error"><%= flash[:error] %></div>
+    <% end %>
+    <div class="content">
+      <%= yield %>
+    </div>
+  </div>
+  <div id="footer">
+    <div class="content">
+          <span class="symfony">
+            <%= image_tag "jobeet-mini.png" %>
+            powered by <a href="http://www.symfony-project.org/">
+            <%= image_tag "symfony.gif", :alt => "symfony framework" %>
+          </a>
+          </span>
+      <ul>
+        <li><a href="">About Jobeet</a></li>
+        <li class="feed"><a href="">Full feed</a></li>
+        <li><a href="">Jobeet API</a></li>
+        <li class="last"><a href="">Affiliates</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
 </body>
 </html>
