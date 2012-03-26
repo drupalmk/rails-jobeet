@@ -2,13 +2,13 @@ require 'test_helper'
 
 class JobsControllerTest < ActionController::TestCase
   setup do
-    @job = jobs(:one)
+    @job = jobs(:sensio)
   end
 
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:jobs)
+    assert_select('.category_Programming tr', 10)
   end
 
   test "should get new" do
