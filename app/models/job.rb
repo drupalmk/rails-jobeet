@@ -20,9 +20,9 @@ class Job < ActiveRecord::Base
      unless self.logo_file.nil?
        o =  [('a'..'z')].map{|i| i.to_a}.flatten
        random_name  =  (0..12).map{ o[rand(o.length)] }.join
-       file_ext = File.extname(self.logo_file.tempfile)
+       file_ext = File.extname(self.logo_file.original_filename)
        #file_ext = /(.*\.)(.*$)/.match(File.basename(self.logo_file.tempfile))[2]
-       new_logo_filename = random_name + '.' + file_ext
+       new_logo_filename = random_name + file_ext
        
        delete_upload
        FileUtils.copy_file(self.logo_file.tempfile, Rails.root.join(Job::JOB_UPLOADS_DIR, new_logo_filename))
