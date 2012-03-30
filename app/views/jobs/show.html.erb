@@ -13,7 +13,7 @@
   </h3>
   <% unless @job.logo.nil? %>
     <div class="logo">
-      <a href="<%= url_for @job %>">
+      <a href="<%= @job.url %>">
         <img src="/upload/jobs/<%= @job.logo %>"
              alt="<%= @job.company %> logo" />
       </a>
@@ -29,12 +29,12 @@
   <p class="how_to_apply"><%= @job.how_to_apply %></p>
 
   <div class="meta">
-    <small>posted on <%= @job.created_at.to_formatted_s(:long_ordinal) %></small>
+    <small>posted on <%= @job.created_at %></small>
   </div>
 
   <div style="padding: 20px 0">
     <%= link_to 'Edit', edit_job_path(@job) %>
     <%= link_to 'Back', jobs_path %>
-    <%= link_to 'Remove', @job, :confirm => 'Are you sure?', :method => :delete %>
+    <%= button_to "Remove", @job, :confirm => 'Are you sure?', :method => :delete %>
   </div>
 </div>
