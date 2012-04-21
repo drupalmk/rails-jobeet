@@ -23,7 +23,7 @@ class Job < ActiveRecord::Base
   end
 
   def self.get_jobs_by_category(id, limit)
-    self.where("category_id = ? AND expires_at > ?", id, DateTime.now)
+    self.where("category_id = ? AND is_activated = True AND expires_at > ?", id, DateTime.now)
         .order("expires_at desc")
         .limit(limit)
   end

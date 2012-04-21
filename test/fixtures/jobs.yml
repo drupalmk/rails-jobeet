@@ -46,8 +46,8 @@ job_<%= i %>:
   how_to_apply: Send your resume to fabien.potencier [at] sensio.com
   is_public: true
   is_activated: true
-  created_at: 2012-03-10 17:15:08
-  expires_at: 2012-04-09 17:15:08
+  created_at: 2012-04-10 17:15:08
+  expires_at: 2012-05-09 17:15:08
   email: jobs@acme.com
 <% end %>
 expired_job:
@@ -61,4 +61,4 @@ expired_job:
   is_activated:   true
   created_at: 2011-03-10 17:15:08
   expires_at: 2011-04-09 17:15:08
-  email:          job@example.co
+  email:          job@example.com
