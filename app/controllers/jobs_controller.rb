@@ -2,10 +2,6 @@ class JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.json
   def index
-    #@categories = Category.get_containing_jobs
-    #@categories.each do |category|
-    #   category.active_jobs = Job.get_jobs_by_category(category.id, Jobeet::Application::MAX_JOBS_ON_HOME)
-    #end
     @categories = Job.get_categories_with_jobs(Jobeet::Application::MAX_JOBS_ON_HOME)
     respond_to do |format|
       format.html # index.html.erb
