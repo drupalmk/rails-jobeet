@@ -1,14 +1,26 @@
 class Job < ActiveRecord::Base
   
-  belongs_to :category
-  
   JOB_TYPES = { fulltime: 'Full time', parttime: 'Part time', freelance: 'Freelance' }
   
   JOB_UPLOADS_DIR = Rails.root.join('public', 'upload', 'jobs')
-  
+
+  belongs_to :category
+
+  validates_presence_of :job_type, :company, :position, 
+                        :location, :description, :how_to_apply, :email, 
+                        :message => "Must not be blank"
+
   attr_accessor :logo_file
   
   after_initialize :default_values
+  
+  def self.get_categories_with_jobs(limit)
+    categories = Category.get_containing_jobs
+    categories.each do |category|
+      category.active_jobs = self.get_jobs_by_category(category.id, limit)
+    end
+    return categories
+  end
 
   def self.get_jobs_by_category(id, limit)
     self.where("category_id = ? AND expires_at > ?", id, DateTime.now)
@@ -21,13 +33,11 @@ class Job < ActiveRecord::Base
        o =  [('a'..'z')].map{|i| i.to_a}.flatten
        random_name  =  (0..12).map{ o[rand(o.length)] }.join
        file_ext = File.extname(self.logo_file.original_filename)
-       #file_ext = /(.*\.)(.*$)/.match(File.basename(self.logo_file.tempfile))[2]
        new_logo_filename = random_name + file_ext
        
        delete_upload
        FileUtils.copy_file(self.logo_file.tempfile, Rails.root.join(Job::JOB_UPLOADS_DIR, new_logo_filename))
        
-
        self.logo = new_logo_filename
        self.logo_file = nil
 
